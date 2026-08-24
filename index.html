@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<title>Bueno — for you ♡</title>
+<meta name="theme-color" content="#1a0508" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<!-- Ambient background canvas layer (particles behind everything) -->
+<canvas id="bg-particles"></canvas>
+
+<!-- LOADING SCREEN -->
+<div id="loading-screen" class="screen active">
+  <div class="loading-inner">
+    <div class="loading-mark">♡</div>
+    <p class="loading-text">Preparing something sweet for you<span class="dots"><span>.</span><span>.</span><span>.</span></span></p>
+    <div class="loading-bar"><div class="loading-bar-fill" id="loading-bar-fill"></div></div>
+    <p class="loading-error" id="loading-error" hidden></p>
+    <button class="retry-btn" id="retry-btn" hidden>Try again</button>
+  </div>
+</div>
+
+<!-- QUANTITY SCREEN -->
+<div id="quantity-screen" class="screen">
+  <div class="quantity-inner">
+    <p class="eyebrow">bueno, for you</p>
+    <h1 class="quantity-title">How many chocolates<br>should I make for you? <span class="heart">♡</span></h1>
+    <div class="stepper" role="group" aria-label="Choose quantity">
+      <button id="qty-minus" class="stepper-btn" aria-label="Decrease quantity">−</button>
+      <div class="stepper-value" id="qty-value">3</div>
+      <button id="qty-plus" class="stepper-btn" aria-label="Increase quantity">+</button>
+    </div>
+    <button id="make-btn" class="make-btn">Make them <span class="heart">♡</span></button>
+  </div>
+</div>
+
+<!-- 3D SCENE ROOT -->
+<div id="scene-root" class="screen">
+  <canvas id="gl"></canvas>
+
+  <!-- Top bar UI -->
+  <div class="hud hud-top">
+    <button id="back-btn" class="hud-btn" hidden aria-label="Back to all chocolates">
+      <svg viewBox="0 0 24 24" width="18" height="18"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>All chocolates</span>
+    </button>
+    <div class="hud-title" id="hud-title">choose one ♡</div>
+    <button id="sound-btn" class="hud-btn hud-btn-icon" aria-label="Toggle music">
+      <svg id="icon-sound-on" viewBox="0 0 24 24" width="18" height="18"><path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor"/><path d="M16.5 8.5a5 5 0 010 7" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/><path d="M19 6a9 9 0 010 12" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.6"/></svg>
+      <svg id="icon-sound-off" viewBox="0 0 24 24" width="18" height="18" hidden><path d="M4 9v6h4l5 5V4L8 9H4z" fill="currentColor"/><path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+
+  <!-- Pieces remaining pill -->
+  <div class="pieces-pill" id="pieces-pill" hidden>
+    <span id="pieces-label">4 / 4 pieces left</span>
+  </div>
+
+  <!-- Bottom hint -->
+  <div class="hint" id="hint">drag to look around · tap a chocolate ♡</div>
+
+  <!-- Romantic completion message -->
+  <div class="finished-toast" id="finished-toast" hidden>
+    <p>Looks like you ate it all <span class="heart">♡</span></p>
+  </div>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
